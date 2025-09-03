@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>FitPro - Rutinas de Gimnasio</title>
+<link rel="stylesheet" href="../css/style.css" />
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+<link rel="icon" href="data:,">
+
+</head>
+<body>
+
+
+<!-- 🔝 Navegación -->
+<header>
+    <h1>FitPro - Rutinas Personalizadas</h1>
+    <nav>
+        <ul>
+            <li><a href="#" onclick="mostrarSeccion('inicio')">Inicio</a></li>
+            <li><a href="#" onclick="mostrarSeccion('login')">Login</a></li>
+            <li><a href="#" onclick="mostrarSeccion('registro')">Registro</a></li>
+            <li><a href="#" onclick="mostrarSeccion('mis-compras')">Mis compras</a></li>
+        </ul>
+    </nav>
+</header>
+
+
+
+<!-- 🏠 Inicio -->
+<main id="inicio">
+    <section class="intro">
+    <h2>Alcanza tu mejor versión</h2>
+    <p>Compra rutinas personalizadas según tu objetivo físico: fuerza, masa, definición o rendimiento.</p>
+    </section>
+
+    <section class="rutinas">
+    <div class="rutina-card">
+        <h3>Rutina de Fuerza</h3>
+        <p>Entrenamiento de 4 días centrado en fuerza máxima. Incluye progresión semanal.</p>
+        <span class="precio">$4.500 ARS</span>
+        <button id="btnComprar" >Comprar</button>
+    </div>
+    <div class="rutina-card">
+        <h3>Rutina de Hipertrofia</h3>
+        <p>Plan de 5 días para ganar masa muscular con ejercicios compuestos y aislamiento.</p>
+        <span class="precio">$5.000 ARS</span>
+        <button>Comprar</button>
+    </div>
+    <div class="rutina-card">
+        <h3>Full Body Express</h3>
+        <p>Ideal para quienes entrenan 3 veces por semana. Alta intensidad, corta duración.</p>
+        <span class="precio">$3.800 ARS</span>
+        <button>Comprar</button>
+    </div>
+    </section>
+
+</main>
+
+<!-- 🔐 Login -->
+<section id="login" class="form-container" style="display:none;">
+    <h2>Iniciar sesión</h2>
+    <form id="login-form">
+        <input type="email" placeholder="Email" required />
+        <input type="password" placeholder="Contraseña" required />
+        <button type="submit">Ingresar</button>
+    </form>
+</section>
+
+<!-- 📝 Registro -->
+<section id="registro" class="form-container" style="display:none;">
+    <h2>Crear cuenta</h2>
+    <form id="register-form">
+    <input type="text" placeholder="Nombre completo" required />
+    <input type="email" placeholder="Email" required />
+    <input type="password" placeholder="Contraseña" required />
+    <button type="submit">Registrarme</button>
+    </form>
+</section>
+
+<!-- mis Compras -->
+<section id="mis-compras" style="display:none;">
+    <table class="tabla-compras">
+        <thead>
+            <tr>
+                <th>Nombre</th>
+                <th>Rutina</th>
+                <th>Fecha</th>
+            </tr>
+        </thead>
+        <tbody id="compras-body">
+            <tr>
+                <td>Valen</td>
+                <td>Hipertrofia</td>
+                <td>22/07/2025</td> 
+            </tr>
+            <tr>
+                <td>Valen</td>
+                <td>Hipertrofia</td>
+                <td>22/07/2025</td> 
+            </tr>
+            <tr>
+                <td>Valen</td>
+                <td>Hipertrofia</td>
+                <td>22/07/2025</td> 
+            </tr>
+
+        </tbody>
+    </table>
+</section>
+
+<section class="info">
+    
+    <a href="https://wa.me/XXXXXXXXXX" target="_blank" class="whatsapp">
+        <i class="fab fa-whatsapp"></i>
+    </a>
+    <a href="https://www.instagram.com/tuusuario" target="_blank" class="instagram">
+        <i class="fab fa-instagram"></i>
+    </a>
+    <a href="mailto:tucorreo@gmail.com" class="gmail">
+        <i class="fas fa-envelope"></i>
+    </a>
+    
+</section>
+<!-- 🔚 Footer -->
+<footer>
+    <p>&copy; 2025 FitPro. Todos los derechos reservados.</p>
+</footer>
+<script src="../java script/codigo.js"></script>
+</body>
+</html>
+

@@ -1,0 +1,320 @@
+/* Variables de colores */
+:root {
+  --verde: #2ecc71;
+  --verde-oscuro: #27ae60;
+  --gris: #ecf0f1;
+  --gris-oscuro: #bdc3c7;
+  --fondo: var(--gris);
+  --texto: #2c3e50;
+  --fondo-carta: white;
+  --borde-carta: var(--gris-oscuro);
+  --fondo-header: var(--verde);
+  --fondo-footer: var(--gris-oscuro);
+
+  --fondo: #1c1c1c;
+  --texto: #ecf0f1;
+  --gris: #2c3e50;
+  --gris-oscuro: #34495e;
+  --fondo-carta: #2c2c2c;
+  --borde-carta: #444;
+  --fondo-header: #14532d;
+  --fondo-footer: #222;
+}
+
+/* Reset general */
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  background-color: var(--fondo);
+  color: var(--texto);
+}
+
+/* Header */
+
+header {
+    position: relative;
+    background-image: url('../img/foto2gym.jpeg'); /* Asegurate de que la ruta sea correcta */
+    background-size: cover;
+    background-position: center;
+    height: 300px;
+    color: white;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    overflow: hidden;
+}
+
+/* Capa oscura encima de la imagen */
+header::before {
+    content: "";
+    position: absolute;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
+    background-color: rgba(0, 0, 0, 0.7); /* Nivel de oscuridad */
+    z-index: 1;
+}
+
+header::after {
+    content: "";
+    position: absolute;
+    bottom: 0; left: 0;
+    width: 100%;
+    height: 100px; /* Altura del degradado */
+    background: linear-gradient(to bottom, transparent, #1c1c1c); /* Gris body */
+    z-index: 1;
+}
+
+/* Título y nav por encima del overlay */
+header h1,
+header nav {
+    position: relative;
+    z-index: 2;
+}
+
+header nav ul {
+    list-style: none;
+    padding: 0;
+    margin: 10px 0;
+    display: flex;
+    gap: 20px;
+}
+
+header nav ul li a {
+    color: white;
+    text-decoration: none;
+    font-weight: bold;
+    font-size: 1.1em;
+    transition: color 0.3s;
+}
+
+header nav ul li a:hover {
+    color: #0e812d;
+}
+
+
+
+
+header h1 {
+  margin: 0;
+  text-align: center;
+}
+
+nav ul {
+  list-style: none;
+  padding: 0;
+  margin-top: 15px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 15px;
+}
+
+nav a {
+  color: white;
+  text-decoration: none;
+}
+
+/* Main */
+main {
+  padding: 20px;
+}
+
+.intro {
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+.rutinas {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 20px;
+}
+
+.rutina-card {
+  background-color: var(--fondo-carta);
+  border: 1px solid var(--borde-carta);
+  border-radius: 12px;
+  padding: 20px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+}
+
+.rutina-card h3 {
+  color: var(--verde-oscuro);
+}
+
+.precio {
+  font-weight: bold;
+  color: var(--texto);
+  display: block;
+  margin-top: 10px;
+}
+
+button {
+  background-color: var(--verde);
+  color: white;
+  border: none;
+  padding: 10px 16px;
+  border-radius: 6px;
+  cursor: pointer;
+  margin-top: 10px;
+  transition: background-color 0.3s ease;
+}
+
+button:hover {
+  background-color: #12532d;
+}
+
+.info {
+    display: flex;
+    gap: 15px;
+    justify-content: center;
+    margin-top: 20px;
+    margin-bottom: 10px;
+}
+
+.info a {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    color: white;
+    font-size: 22px;
+    text-decoration: none;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+/* Colores de cada icono */
+.whatsapp { background-color: #25D366; }
+.instagram { background: radial-gradient(circle at 30% 30%, #feda75, #d62976, #962fbf, #4f5bd5); }
+.gmail { background-color: #D44638; }
+
+/* Efecto hover */
+.info a:hover {
+    transform: scale(1.1);
+    box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+}
+
+
+/* Footer */
+footer {
+  background-color: var(--fondo-footer);
+  text-align: center;
+  padding: 10px;
+  font-size: 0.9em;
+}
+
+/* 📱 Responsive */
+@media (max-width: 768px) {
+  .rutinas {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .rutina-card {
+    width: 80%;
+  }
+
+  nav ul {
+    flex-direction: column;
+    align-items: center;
+  }
+}
+
+
+
+
+
+
+/* -------------login/register---------------------- */
+
+.form-container {
+  max-width: 400px;
+  margin: 50px auto;
+  background-color: var(--fondo-carta);
+  padding: 30px;
+  border-radius: 10px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+  color: var(--texto);
+}
+
+.form-container h2 {
+  text-align: center;
+  margin-bottom: 20px;
+  color: var(--verde-oscuro);
+}
+
+form input {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 15px;
+  border: 1px solid var(--gris-oscuro);
+  border-radius: 5px;
+  background-color: white;
+}
+
+body.dark-mode form input {
+  background-color: #333;
+  color: white;
+  border-color: #555;
+}
+
+form button {
+  width: 100%;
+  background-color: var(--verde);
+  color: white;
+  border: none;
+  padding: 10px;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+form button:hover {
+  background-color: var(--verde-oscuro);
+}
+
+form p {
+  text-align: center;
+  margin-top: 15px;
+}
+
+form a {
+  color: var(--verde-oscuro);
+  text-decoration: none;
+}
+/* ----------------------------------- */
+
+/* ----------------tabla compras--------------------- */
+#mis-compras {
+  margin: 40px auto;
+  max-width: 800px;
+  padding: 20px;
+  background-color: #14532d;
+  border-radius: 12px;
+}
+
+#mis-compras h2 {
+  text-align: center;
+  color: var(--verde-principal, #2e7d32);
+  margin-bottom: 20px;
+}
+
+.tabla-compras {
+  width: 100%;
+  border-collapse: collapse;
+  
+}
+
+.tabla-compras th,
+.tabla-compras td {
+  padding: 12px;
+  text-align: left;
+  border-bottom: 1px solid #ccc5;
+}
+
+.tabla-compras th {
+  color: #333;
+}
