@@ -16,7 +16,7 @@ document.getElementById('register-form').addEventListener('submit', function (e)
 
 
 
-const API_URL = "https://7b429d053383.ngrok-free.app";
+const API_URL = "https://rutinas-de-gimnasio.vercel.app";
 
 // 🔄 Cargar compras desde backend
 async function cargarCompras() {

@@ -31,9 +31,9 @@ router.post('/crear-preferencia', async (req, res) => {
                 ],
 
                 back_urls: {
-                    success: 'https://7b429d053383.ngrok-free.app/success.html',
-                    failure: 'https://7b429d053383.ngrok-free.app/failure.html',
-                    pending: 'https://7b429d053383.ngrok-free.app/pending.html'
+                    success: 'https://rutinas-de-gimnasio.vercel.app/success.html',
+                    failure: 'https://rutinas-de-gimnasio.vercel.app/failure.html',
+                    pending: 'https://rutinas-de-gimnasio.vercel.app/pending.html'
                 },
                 auto_return: 'approved'
             }
