@@ -29,5 +29,5 @@ app.listen(PORT, () => {
   console.log(`Servidor corriendo en http://localhost:${PORT}`);
 });
 
-
-
+//exportar para vercel
+module.exports = app;
