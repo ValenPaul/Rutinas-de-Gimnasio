@@ -13,15 +13,22 @@ const allowedOrigins = process.env.ALLOWED_ORIGINS
   ? process.env.ALLOWED_ORIGINS.split(",")
   : [];
 
+console.log("Allowed origins cargados:", allowedOrigins);
+
 app.use(cors({
-  origin: (origin, callback) => {
-    if (!origin || allowedOrigins.includes(origin)) {
+  origin: function (origin, callback) {
+    if (!origin) return callback(null, true); // Postman, curl
+    if (allowedOrigins.includes(origin)) {
       callback(null, true);
     } else {
+      console.warn("Bloqueado por CORS:", origin);
       callback(new Error("Not allowed by CORS"));
     }
-  }
+  },
+  methods: ["GET", "POST", "PUT", "DELETE"],
+  credentials: true
 }));
+
 app.use(express.json()); // Para leer JSON del frontend
 
 // Servir archivos estáticos desde la carpeta "public"
