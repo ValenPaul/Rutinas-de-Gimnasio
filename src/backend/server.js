@@ -17,6 +17,7 @@ console.log("Allowed origins cargados:", allowedOrigins);
 
 app.use(cors({
   origin: function (origin, callback) {
+    console.log("🌍 Origin recibido:", origin);
     if (!origin) return callback(null, true); // Postman, curl
     if (allowedOrigins.includes(origin)) {
       callback(null, true);
