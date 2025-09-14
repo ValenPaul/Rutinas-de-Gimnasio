@@ -30,6 +30,10 @@ app.use(cors({
   credentials: true
 }));
 
+// Manejar preflight OPTIONS globalmente
+app.options('*', cors());
+
+
 app.use(express.json()); // Para leer JSON del frontend
 
 // Servir archivos estáticos desde la carpeta "public"
