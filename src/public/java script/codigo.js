@@ -16,7 +16,7 @@ document.getElementById('register-form').addEventListener('submit', function (e)
 
 
 
-const API_URL = "https://rutinas-de-gimnasio.vercel.app";
+const API_URL = "https://rutinas-de-gimnasio.vercel.app" || "https://rutinas-de-gimnasio-git-feature-subi-0b262a-valenpauls-projects.vercel.app";
 
 // 🔄 Cargar compras desde backend
 async function cargarCompras() {
@@ -31,7 +31,7 @@ async function cargarCompras() {
     `;
 
     try {
-        const res = await fetch(`${API_URL}/compras/usuario/${usuarioId}`);
+        const res = await fetch(`${API_URL}/api/compras/usuario/${usuarioId}`);
 
         if (!res.ok) {
             throw new Error(`Error ${res.status}: No se pudieron obtener las compras`);
