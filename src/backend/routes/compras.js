@@ -31,9 +31,9 @@ router.post('/crear-preferencia', async (req, res) => {
                 ],
 
                 back_urls: {
-                    success: 'https://rutinas-de-gimnasio.vercel.app/success.html',
-                    failure: 'https://rutinas-de-gimnasio.vercel.app/failure.html',
-                    pending: 'https://rutinas-de-gimnasio.vercel.app/pending.html'
+                    success: 'https://rutinas-de-gimnasio-git-feature-subi-0b262a-valenpauls-projects.vercel.app/success.html',
+                    failure: 'https://rutinas-de-gimnasio-git-feature-subi-0b262a-valenpauls-projects.vercel.app/failure.html',
+                    pending: 'https://rutinas-de-gimnasio-git-feature-subi-0b262a-valenpauls-projects.vercel.app/pending.html'
                 },
                 auto_return: 'approved'
             }
