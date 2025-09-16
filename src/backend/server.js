@@ -49,10 +49,12 @@ app.use('/api/usuarios', usuariosRoutes);
 app.use('/api/rutinas', rutinasRoutes);
 app.use('/api/compras', comprasRoutes);
 
+/*    ----- En vercel no usar app.listen, solo para correr localmente ---------
 const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => {
   console.log(`Servidor corriendo en http://localhost:${PORT}`);
 });
+*/
 
 //exportar para vercel
 module.exports = app;
