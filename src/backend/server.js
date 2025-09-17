@@ -10,7 +10,7 @@ dotenv.config();
 
 // Lista blanca de orígenes permitidos desde .env
 const allowedOrigins = process.env.ALLOWED_ORIGINS
-  ? process.env.ALLOWED_ORIGINS.split(",")
+  ? process.env.ALLOWED_ORIGINS.split(",").map(o => o.trim())
   : [];
 
 console.log("Allowed origins cargados:", allowedOrigins);

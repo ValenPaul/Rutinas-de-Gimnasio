@@ -16,7 +16,9 @@ document.getElementById('register-form').addEventListener('submit', function (e)
 
 
 
-const API_URL = "https://rutinas-de-gimnasio.vercel.app" || "https://rutinas-de-gimnasio-git-feature-subi-0b262a-valenpauls-projects.vercel.app";
+const API_URL = window.location.origin.includes("git-feature-subi-0b262a") 
+  ? "https://rutinas-de-gimnasio-git-feature-subi-0b262a-valenpauls-projects.vercel.app"
+  : "https://rutinas-de-gimnasio.vercel.app";
 
 // 🔄 Cargar compras desde backend
 async function cargarCompras() {
