@@ -17,6 +17,11 @@ router.post('/crear-preferencia', async (req, res) => {
     try {
         const { titulo, precio, cantidad } = req.body; // datos desde frontend
 
+         // Tomamos el origin que llega desde el frontend
+        const origin = req.headers.origin || process.env.ALLOWED_ORIGINS || "https://rutinas-de-gimnasio.vercel.app";
+
+        console.log("🔗 Origin detectado para back_urls:", origin);
+
         const preference = new Preference(mp);
 
         const result = await preference.create({
@@ -31,9 +36,9 @@ router.post('/crear-preferencia', async (req, res) => {
                 ],
 
                 back_urls: {
-                    success: 'https://rutinas-de-gimnasio-git-feature-subi-0b262a-valenpauls-projects.vercel.app/success.html',
-                    failure: 'https://rutinas-de-gimnasio-git-feature-subi-0b262a-valenpauls-projects.vercel.app/failure.html',
-                    pending: 'https://rutinas-de-gimnasio-git-feature-subi-0b262a-valenpauls-projects.vercel.app/pending.html'
+                    success: `${origin}/success.html`,
+                    failure: `${origin}/failure.html`,
+                    pending: `${origin}/pending.html`
                 },
                 auto_return: 'approved'
             }
