@@ -17,10 +17,13 @@ router.post('/crear-preferencia', async (req, res) => {
     try {
         const { titulo, precio, cantidad } = req.body; // datos desde frontend
 
+        console.log("Datos recibidos:", req.body);
+        console.log("Access Token presente:", !!process.env.MP_ACCESS_TOKEN);
+
          // Tomamos el origin que llega desde el frontend
         const origin = req.headers.origin || process.env.ALLOWED_ORIGINS || "https://rutinas-de-gimnasio.vercel.app";
 
-        console.log("🔗 Origin detectado para back_urls:", origin);
+        console.log("Origin detectado para back_urls:", origin);
 
         const preference = new Preference(mp);
 
@@ -43,6 +46,8 @@ router.post('/crear-preferencia', async (req, res) => {
                 auto_return: 'approved'
             }
         });
+
+        console.log("✅ Preferencia creada:", result);
 
         // Responder con el link para pagar
         res.json({ init_point: result.init_point || result.body?.init_point});
