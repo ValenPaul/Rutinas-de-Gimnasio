@@ -14,11 +14,11 @@ document.getElementById('register-form').addEventListener('submit', function (e)
 });
 
 
-
-
 const API_URL = window.location.origin.includes("git-feature-subi-0b262a") 
   ? "https://rutinas-de-gimnasio-git-feature-subi-0b262a-valenpauls-projects.vercel.app"
   : "https://rutinas-de-gimnasio.vercel.app";
+
+
 
 // 🔄 Cargar compras desde backend
 async function cargarCompras() {
@@ -107,7 +107,8 @@ function comprarRutina(rutinaId, nombreRutina, precio) {
 }
 
 
-document.getElementById("btnComprar").addEventListener("click", async () => {
+document.querySelectorAll(".btnComprar").forEach((boton) => {
+    boton.addEventListener("click", async (e) => {
     try {
         // Datos de ejemplo de la rutina o producto
         const producto = {
@@ -120,7 +121,8 @@ document.getElementById("btnComprar").addEventListener("click", async () => {
         const resp = await fetch(`${API_URL}/api/compras/crear-preferencia`, {
             method: "POST",
             headers: {
-                "Content-Type": "application/json"
+                "Content-Type": "application/json",
+                "Authorization": `Bearer ${sessionStorage.getItem('token')}`
             },
             body: JSON.stringify(producto)
         });
@@ -136,4 +138,4 @@ document.getElementById("btnComprar").addEventListener("click", async () => {
     } catch (error) {
         console.error("Error al iniciar el pago:", error);
     }
-});
+})});

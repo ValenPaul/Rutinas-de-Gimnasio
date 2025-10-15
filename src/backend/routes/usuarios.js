@@ -1,34 +1,45 @@
 const express = require('express');
 const router = express.Router();
 const db = require('../db');
+const bcrypt = require('bcrypt');
+const jwt = require('jsonwebtoken');
+const Usuario = require('../models/Usuario');
 
 // Registro
-router.post('/registro', (req, res) => {
-  const { nombre, email, contraseña } = req.body;
-  db.query(
-    'INSERT INTO usuarios (nombre, email, contraseña) VALUES (?, ?, ?)',
-    [nombre, email, contraseña],
-    (err, result) => {
-      if (err) return res.status(500).json({ error: 'Error al registrar' });
-      res.status(201).json({ mensaje: 'Usuario registrado con éxito' });
-    }
-  );
+router.post('/register', async (req, res) => {
+  try {
+    const { nombre, email, contraseña } = req.body;
+
+    const existe = await Usuario.buscarPorEmail(email);
+    if (existe) return res.status(400).json({ error: 'El email ya está registrado' });
+
+    const passwordHash = await bcrypt.hash(contraseña, 10);
+    const id = await Usuario.crear(nombre, email, passwordHash);
+
+    res.json({ mensaje: 'Usuario registrado', id });
+  } catch (err) {
+    console.error(err);
+    res.status(500).json({ error: 'Error al registrar' });
+  }
 });
 
 // Login
-router.post('/login', (req, res) => {
-  const { email, contraseña } = req.body;
-  db.query(
-    'SELECT * FROM usuarios WHERE email = ? AND contraseña = ?',
-    [email, contraseña],
-    (err, results) => {
-      if (err) return res.status(500).json({ error: 'Error al iniciar sesión' });
-      if (results.length === 0) {
-        return res.status(401).json({ error: 'Credenciales incorrectas' });
-      }
-      res.json({ mensaje: 'Login exitoso', usuario: results[0] });
-    }
-  );
+router.post('/login', async (req, res) => {
+  try {
+    const { email, contraseña } = req.body;
+    const usuario = await Usuario.buscarPorEmail(email);
+    if (!usuario) return res.status(404).json({ error: 'Usuario no encontrado' });
+
+    const esValido = await bcrypt.compare(contraseña, usuario.contraseña);
+    if (!esValido) return res.status(401).json({ error: 'Contraseña incorrecta' });
+
+    const token = jwt.sign({ id: usuario.id, email: usuario.email }, process.env.JWT_SECRET, { expiresIn: '2h' });
+    res.json({ token, usuario: { id: usuario.id, nombre: usuario.nombre, email: usuario.email } });
+  } catch (err) {
+    console.error(err);
+    res.status(500).json({ error: 'Error al iniciar sesión' });
+  }
 });
+
 
 module.exports = router;

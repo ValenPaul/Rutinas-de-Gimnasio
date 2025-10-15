@@ -3,10 +3,12 @@ const express = require('express');
 const cors = require('cors');
 const dotenv = require('dotenv');
 const path = require('path'); //para que express sirva los archivos estaticos
-
-
+const webhookRoutes = require('./routes/webhook');
 const app = express();
-dotenv.config();
+dotenv.config({ path: path.resolve(__dirname, '.env') });  // forzar para que node lea env
+
+app.use(express.json());
+app.use('/api', webhookRoutes);
 
 // Lista blanca de orígenes permitidos desde .env
 const allowedOrigins = process.env.ALLOWED_ORIGINS
@@ -37,7 +39,7 @@ app.options('*', cors());
 app.use(express.json()); // Para leer JSON del frontend
 
 // Servir archivos estáticos desde la carpeta "public"
-app.use(express.static(path.join(__dirname, 'public')));
+app.use(express.static(path.join(__dirname, '../public')));
 
 
 // Rutas
@@ -55,6 +57,10 @@ app.listen(PORT, () => {
   console.log(`Servidor corriendo en http://localhost:${PORT}`);
 });
 */
+
+
+
+
 
 //exportar para vercel
 module.exports = app;

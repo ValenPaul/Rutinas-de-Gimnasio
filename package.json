@@ -1,0 +1,20 @@
+{
+  "name": "rutinas-gimnasio",
+  "version": "1.0.0",
+  "main": "src/backend/server.js",
+  "scripts": {
+    "start": "node src/backend/server.js",
+    "dev": "nodemon src/backend/server.js"
+  },
+  "dependencies": {
+    "axios": "^1.12.2",
+    "bcrypt": "^6.0.0",
+    "cors": "^2.8.5",
+    "dotenv": "^16.3.1",
+    "express": "^4.18.2",
+    "jsonwebtoken": "^9.0.2",
+    "mercadopago": "^2.8.0",
+    "mysql2": "^3.14.2",
+    "nodemailer": "^7.0.9"
+  }
+}

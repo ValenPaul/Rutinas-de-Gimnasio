@@ -1,11 +1,13 @@
 const express = require('express');
 const router = express.Router();
 const { MercadoPagoConfig, Preference } = require('mercadopago');
+const verificarToken = require('../middleware/auth');
 
 require('dotenv').config();
 
-console.log("Access token usado:", process.env.MP_ACCESS_TOKEN ? "OK" : "NO CARGADO");
-
+if (process.env.NODE_ENV !== 'production') {
+  console.log("Access token usado:", process.env.MP_ACCESS_TOKEN ? "OK" : "NO CARGADO");
+} // para no exponer info en logs del servidor
 
 // Crear la configuración con tu Access Token
 const mp = new MercadoPagoConfig({
@@ -13,7 +15,9 @@ const mp = new MercadoPagoConfig({
 });
 
 // Endpoint para crear una preferencia de pago
-router.post('/crear-preferencia', async (req, res) => {
+router.post('/crear-preferencia', verificarToken, async (req, res) => {
+    const usuarioId = req.usuario.id;
+    console.log("Compra iniciada por usuario: ", usuarioId);
     try {
         const { titulo, precio, cantidad } = req.body; // datos desde frontend
 
@@ -43,7 +47,9 @@ router.post('/crear-preferencia', async (req, res) => {
                     failure: `${origin}/failure.html`,
                     pending: `${origin}/pending.html`
                 },
-                auto_return: 'approved'
+                auto_return: 'approved',
+                
+                notification_url: 'https://tu-backend.com/api/webhook'
             }
         });
 
