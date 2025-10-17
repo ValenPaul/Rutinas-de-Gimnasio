@@ -1,10 +1,10 @@
 {
   "name": "rutinas-gimnasio",
   "version": "1.0.0",
-  "main": "src/backend/server.js",
+  "main": "server.js",
   "scripts": {
-    "start": "node src/backend/server.js",
-    "dev": "nodemon src/backend/server.js"
+    "start": "node server.js",
+    "dev": "nodemon server.js"
   },
   "dependencies": {
     "axios": "^1.12.2",
