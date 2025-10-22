@@ -113,7 +113,7 @@ document.querySelectorAll(".btnComprar").forEach((boton) => {
         // Datos de ejemplo de la rutina o producto
         const producto = {
             titulo: "Rutina Premium de 30 días",
-            precio: 10, // precio en ARS
+            precio: 1, // precio en ARS
             cantidad: 1
         };
 
