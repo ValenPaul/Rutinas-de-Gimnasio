@@ -37,7 +37,7 @@ router.post('/webhook', async (req, res) => {
             console.log('💸 Pago aprobado:', payment);
 
             // ⚙️ Datos del comprador (si están disponibles)
-            const emailComprador = 'valenpaul02@gmail.com'//payment.payer.email || 'sin_email@desconocido.com';
+            const emailComprador = payment.payer.email || 'sin_email@desconocido.com';
 
             // ✅ Enviar la rutina
             await transporter.sendMail({
