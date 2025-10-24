@@ -56,7 +56,11 @@ router.post('/crear-preferencia', verificarToken, async (req, res) => {
         console.log("✅ Preferencia creada:", result);
 
         // Responder con el link para pagar
-        res.json({ init_point: result.init_point || result.body?.init_point});
+        //res.json({ init_point: result.init_point || result.body?.init_point});
+        // ✅ Usar el sandbox_init_point para modo de prueba
+        const sandboxUrl = result.sandbox_init_point || result.body?.sandbox_init_point;
+        res.json({ init_point: sandboxUrl });
+
     } catch (error) {
     console.error('Error al crear preferencia:', error);
 
