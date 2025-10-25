@@ -49,7 +49,8 @@ router.post('/crear-preferencia', verificarToken, async (req, res) => {
                 },
                 auto_return: 'approved',
                 
-                notification_url: 'https://rutinas-de-gimnasio-git-prueba-valenpauls-projects.vercel.app/api/webhook'
+                notification_url: 'https://rutinas-de-gimnasio-git-prueba-valenpauls-projects.vercel.app/api/webhook',
+                metadata: { emailComprador: "valenpaul02@gmail.com" },
             }
         });
 
