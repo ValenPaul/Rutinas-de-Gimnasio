@@ -61,6 +61,7 @@ router.post('/crear-preferencia', verificarToken, async (req, res) => {
         const sandboxUrl = result.sandbox_init_point || result.body?.sandbox_init_point;
         res.json({ init_point: sandboxUrl });
 
+
     } catch (error) {
     console.error('Error al crear preferencia:', error);
 
