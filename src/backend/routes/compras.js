@@ -28,6 +28,8 @@ router.post('/crear-preferencia', verificarToken, async (req, res) => {
         const origin = req.headers.origin || process.env.ALLOWED_ORIGINS || "https://rutinas-de-gimnasio.vercel.app";
 
         console.log("Origin detectado para back_urls:", origin);
+        console.log("🔔 URL webhook configurada:", `${origin}/api/routes/webhook`);
+
 
         const preference = new Preference(mp);
 
