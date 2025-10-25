@@ -52,7 +52,7 @@ router.post('/webhook', async (req, res) => {
                 attachments: [
                     {
                         filename: 'rutinaFuerza.pdf',
-                        path: '../archivos/rutinaFuerza.pdf' // archivo local o generado
+                        path: './src/backend/archivos/rutinaFuerza.pdf' // archivo local o generado
                     }
                 ]
             });
