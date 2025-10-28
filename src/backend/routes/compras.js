@@ -25,7 +25,7 @@ router.post('/crear-preferencia', verificarToken, async (req, res) => {
         console.log("Access Token presente:", !!process.env.MP_ACCESS_TOKEN);
 
          // Tomamos el origin que llega desde el frontend
-        const origin = req.headers.origin || process.env.ALLOWED_ORIGINS || "https://rutinas-de-gimnasio.vercel.app";
+        const origin = req.headers.origin || process.env.ALLOWED_ORIGINS || "https://cristianschmidt.vercel.app";
 
         console.log("Origin detectado para back_urls:", origin);
         console.log("🔔 URL webhook configurada:", `${origin}/api/routes/webhook`);
