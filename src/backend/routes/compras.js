@@ -51,7 +51,7 @@ router.post('/crear-preferencia', verificarToken, async (req, res) => {
                 },
                 auto_return: 'approved',
                 
-                notification_url: `${origin}/api/routes/webhook`,
+                notification_url: `${origin}/api/webhook`,
             }
         });
 
