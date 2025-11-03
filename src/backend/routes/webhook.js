@@ -15,6 +15,7 @@ const transporter = nodemailer.createTransport({
 
 // ✅ Endpoint para recibir notificaciones de Mercado Pago
 router.post('/webhook', async (req, res) => {
+    console.log("✅ Webhook activado");
     try {
         const data = req.body;
 
