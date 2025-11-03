@@ -26,9 +26,11 @@ router.post('/crear-preferencia', verificarToken, async (req, res) => {
 
          // Tomamos el origin que llega desde el frontend
         const origin = req.headers.origin || process.env.ALLOWED_ORIGINS || "https://cristianschmidt.vercel.app";
-
-        console.log("Origin detectado para back_urls:", origin);
+        
+        console.log("arranca el try");
         console.log("🔔 URL webhook configurada:", `${origin}/api/routes/webhook`);
+        console.log("Origin detectado para back_urls:", origin);
+       
 
 
         const preference = new Preference(mp);
