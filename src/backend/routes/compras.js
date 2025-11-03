@@ -28,7 +28,7 @@ router.post('/crear-preferencia', verificarToken, async (req, res) => {
         const origin = req.headers.origin || process.env.ALLOWED_ORIGINS || "https://cristianschmidt.vercel.app";
         
         console.log("arranca el try");
-        console.log("🔔 URL webhook configurada:", `${origin}/api/routes/webhook`);
+        console.log("🔔 URL webhook configurada:", `${origin}/api/webhook`);
         console.log("Origin detectado para back_urls:", origin);
        
 
@@ -53,7 +53,7 @@ router.post('/crear-preferencia', verificarToken, async (req, res) => {
                 },
                 auto_return: 'approved',
                 
-                notification_url: `${origin}/api/routes/webhook`,
+                notification_url: `${origin}/api/webhook`,
             }
         });
 

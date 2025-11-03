@@ -8,7 +8,7 @@ const app = express();
 dotenv.config({ path: path.resolve(__dirname, '.env') });  // forzar para que node lea env
 
 app.use(express.json());
-app.use('/api', webhookRoutes);
+app.use('/api/webhook', webhookRoutes);
 
 // Lista blanca de orígenes permitidos desde .env
 const allowedOrigins = process.env.ALLOWED_ORIGINS
