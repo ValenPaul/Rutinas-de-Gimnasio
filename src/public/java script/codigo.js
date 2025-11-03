@@ -15,7 +15,7 @@ document.getElementById('register-form').addEventListener('submit', function (e)
 
 
 const API_URL = window.location.origin.includes("git-feature-subi-0b262a") 
-  ? "https://rutinas-de-gimnasio-git-feature-subi-0b262a-valenpauls-projects.vercel.app"
+  ? "https://rutinas-de-gimnasio-git-prueba-valenpauls-projects.vercel.app"
   : "https://cristianschmidt.vercel.app";
 
 
