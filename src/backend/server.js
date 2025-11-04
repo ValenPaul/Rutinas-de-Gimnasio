@@ -3,7 +3,7 @@ const express = require('express');
 const cors = require('cors');
 const dotenv = require('dotenv');
 const path = require('path'); //para que express sirva los archivos estaticos
-const webhookRoutes = require('./routes/webhook');
+const webhookRoutes = require('../../api/webhook');
 const app = express();
 dotenv.config({ path: path.resolve(__dirname, '.env') });  // forzar para que node lea env
 
