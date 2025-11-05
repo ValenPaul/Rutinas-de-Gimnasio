@@ -118,7 +118,7 @@ document.querySelectorAll(".btnComprar").forEach((boton) => {
         };
 
         // Crear la preferencia de pago en el backend
-        const resp = await fetch(`${API_URL}/api/crear-preferencia`, {
+        const resp = await fetch(`${API_URL}/api/compras/crear-preferencia`, {
             method: "POST",
             headers: {
                 "Content-Type": "application/json",

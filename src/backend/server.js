@@ -49,7 +49,7 @@ const comprasRoutes = require('./routes/compras');
 
 app.use('/api/usuarios', usuariosRoutes);
 app.use('/api/rutinas', rutinasRoutes);
-app.use('/api', comprasRoutes);
+app.use('/api/compras', comprasRoutes);
 
 /*    ----- En vercel no usar app.listen, solo para correr localmente ---------
 const PORT = process.env.PORT || 3000;
