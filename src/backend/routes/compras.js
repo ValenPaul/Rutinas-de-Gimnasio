@@ -1,7 +1,7 @@
 const express = require('express');
 const router = express.Router();
 const { MercadoPagoConfig, Preference } = require('mercadopago');
-const verificarToken = require('../middleware/auth');
+
 
 require('dotenv').config();
 
@@ -13,6 +13,7 @@ if (process.env.NODE_ENV !== 'production') {
 const mp = new MercadoPagoConfig({
     accessToken: process.env.MP_ACCESS_TOKEN
 });
+console.log("prueba de codigo");
 
 // Endpoint para crear una preferencia de pago
 router.post('/crear-preferencia', async (req, res) => {
