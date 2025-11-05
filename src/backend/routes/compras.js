@@ -16,7 +16,8 @@ const mp = new MercadoPagoConfig({
 
 // Endpoint para crear una preferencia de pago
 router.post('/crear-preferencia', async (req, res) => {
-    const usuarioId = req.usuario.id;
+    const usuarioId = req.usuario?.id || "Usuario no autenticado";
+
     console.log("Compra iniciada por usuario: ", usuarioId);
     try {
         const { titulo, precio, cantidad } = req.body; // datos desde frontend
