@@ -3,7 +3,7 @@ const express = require('express');
 const cors = require('cors');
 const dotenv = require('dotenv');
 const path = require('path'); //para que express sirva los archivos estaticos
-const webhookRoutes = require('../../api/webhook');
+const webhookRoutes = require('./routes/webhook');
 const app = express();
 dotenv.config({ path: path.resolve(__dirname, '.env') });  // forzar para que node lea env
 
@@ -36,8 +36,6 @@ app.use(cors({
 app.options('*', cors());
 
 
-app.use(express.json()); // Para leer JSON del frontend
-
 // Servir archivos estáticos desde la carpeta "public"
 app.use(express.static(path.join(__dirname, '../public')));
 
@@ -46,13 +44,17 @@ app.use(express.static(path.join(__dirname, '../public')));
 const usuariosRoutes = require('./routes/usuarios');
 const rutinasRoutes = require('./routes/rutinas');
 const comprasRoutes = require('./routes/compras');
+const adminRoutes = require("./routes/admin");
+
+
 
 app.use('/api/usuarios', usuariosRoutes);
 app.use('/api/rutinas', rutinasRoutes);
 app.use('/api/compras', comprasRoutes);
+app.use("/api/admin", adminRoutes);
 
-/*    ----- En vercel no usar app.listen, solo para correr localmente ---------
-const PORT = process.env.PORT || 3000;
+//    ----- En vercel no usar app.listen, solo para correr localmente ---------
+/*const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => {
   console.log(`Servidor corriendo en http://localhost:${PORT}`);
 });
