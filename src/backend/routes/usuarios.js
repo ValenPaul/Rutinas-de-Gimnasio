@@ -46,9 +46,9 @@ router.post("/register", async (req, res) => {
 // login
 router.post("/login", async (req, res) => {
   try {
-    const { email, contraseña } = req.body;
+    const { email, password } = req.body;
 
-    if (!email || !contraseña) {
+    if (!email || !password) {
       return res.status(400).json({ error: "Faltan datos" });
     }
 
