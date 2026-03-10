@@ -17,7 +17,7 @@ const allowedOrigins = process.env.ALLOWED_ORIGINS
 
 console.log("Allowed origins cargados:", allowedOrigins);
 
-app.use(cors({
+/*app.use(cors({
   origin: function (origin, callback) {
     console.log("🌍 Origin recibido:", origin);
     if (!origin) return callback(null, true); // Postman, curl
@@ -29,6 +29,11 @@ app.use(cors({
     }
   },
   methods: ["GET", "POST", "PUT", "DELETE"],
+  credentials: true
+}));
+*/
+app.use(cors({
+  origin: true,
   credentials: true
 }));
 
