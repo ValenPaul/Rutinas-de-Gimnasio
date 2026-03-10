@@ -1,8 +1,5 @@
 
-const API_URL = //"https://9008-190-231-107-206.ngrok-free.app";
-  window.location.origin.includes("git-feature-subi-0b262a") 
-  ? "https://rutinas-de-gimnasio-git-prueba-valenpauls-projects.vercel.app"
-  : "https://primeconditioning.vercel.app";
+const API_URL = window.location.origin;
 
 
 function verificarSesion() {
