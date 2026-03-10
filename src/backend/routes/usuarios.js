@@ -66,7 +66,7 @@ router.post("/login", async (req, res) => {
 
     // Comparar contraseña escrita con hash guardado
     const coincide = await bcrypt.compare(
-      contraseña,
+      password,
       usuario.password
     );
 
