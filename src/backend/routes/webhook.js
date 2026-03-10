@@ -33,6 +33,9 @@ router.post("/", async (req, res) => {
     const paymentClient = new Payment(client);
     const payment = await paymentClient.get({ id: paymentId });
 
+    console.log("💰 Payment recibido:", payment.id);
+    console.log("💰 Status:", payment.status);
+
     if (payment.status !== "approved") {
       console.log("⌛ Pago no aprobado:", payment.status);
       return res.sendStatus(200);
