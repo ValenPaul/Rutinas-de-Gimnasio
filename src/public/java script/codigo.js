@@ -49,7 +49,7 @@ document.getElementById("login-form").addEventListener("submit", async (e) => {
   
 
   const email = document.getElementById("login-email").value;
-  const contraseña = document.getElementById("login-password").value;
+  const password = document.getElementById("login-password").value;
 
   try {
     const resp = await fetch(`${API_URL}/api/usuarios/login`, {
