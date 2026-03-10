@@ -78,7 +78,7 @@ router.post('/crear-preferencia', verificarToken, async (req, res) => {
 
                 auto_return: 'approved',
 
-                notification_url: `${origin}/api/webhook`,
+                notification_url: `https://primeconditioning.vercel.app/api/webhook`,
             }
         });
 
