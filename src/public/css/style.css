@@ -21,6 +21,9 @@
   --fondo-footer: #222;
 }
 
+
+
+
 /* Reset general */
 body {
   font-family: Arial, sans-serif;
@@ -30,6 +33,11 @@ body {
 }
 
 /* Header */
+
+img {
+  max-width:100%;
+  height:auto;
+}
 
 header {
     position: relative;
@@ -68,10 +76,34 @@ header::after {
 
 /* Título y nav por encima del overlay */
 header h1,
+#btnCerrarSesion,
 header nav {
     position: relative;
     z-index: 2;
 }
+
+
+#btnCerrarSesion {
+  position: absolute;
+  top: 40px;      /* altura alineada con el título */
+  left: 40px;     /* margen izquierdo */
+
+  background: transparent;
+  border: none;
+
+  color: rgba(255, 255, 255, 0.7);
+  font-size: 14px;
+  font-weight: 500;
+
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+#btnCerrarSesion:hover {
+  color: #0e812d;
+  
+}
+
 
 header nav ul {
     list-style: none;
@@ -116,6 +148,7 @@ nav a {
 }
 
 /* Main */
+
 main {
   padding: 20px;
 }
@@ -125,20 +158,85 @@ main {
   margin-bottom: 30px;
 }
 
-.rutinas {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  gap: 20px;
+#motivacion {
+  color: var(--verde-oscuro);
 }
 
-.rutina-card {
-  background-color: var(--fondo-carta);
-  border: 1px solid var(--borde-carta);
-  border-radius: 12px;
-  padding: 20px;
-  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+.titulo-genero {
+  color: #aba9a9;
+  text-align: center;
 }
+
+/*fondo de rutinas*/
+.rutina-card {
+    position: relative;
+    background-color: var(--fondo-carta);
+    border: 1px solid var(--borde-carta);
+    border-radius: 12px;
+    padding: 20px;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+    margin: 8px;
+    background-size: cover;
+    background-position: center;
+    height: 300px;
+    width: 100%;
+    max-width: 500px;
+    color: white;
+    display: flex;
+    flex-direction: column;
+    justify-content: baseline;
+    align-items: baseline;
+    text-align: center;
+    overflow: hidden;
+}
+/* Capa oscura encima de la imagen */
+.rutina-card::before {
+    content: "";
+    position: absolute;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
+    background-color: rgba(0, 0, 0, 0.7); /* Nivel de oscuridad */
+    z-index: 1;
+}
+.rutina-card h3, span, button, a {
+  position: relative;
+  z-index: 2;
+  margin-top: 1px;
+}
+.rutina-card button {
+  margin-top: 80px;
+}
+
+.rutinas-hombres .rutina-card {
+  background-image: url('../img/fondoRutina2.jpeg');
+}
+.rutinas-mujeres .rutina-card {
+  background-image: url('../img/fondoMujeres.jpeg');
+}
+.rutinas-mujeres .rutina-card::before {
+  background-color: rgba(0, 0, 0, 0.8);
+}
+
+
+#AsesoPers {
+  background-image: url('../img/espejosGim.jpg');
+}
+.asesorias span {
+  text-align: start;
+}
+.ContacAseso {
+  background-color: #2c3e50;
+}
+
+.rutinas {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 300px));
+  gap: 50px;
+  justify-content: center;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
 
 .rutina-card h3 {
   color: var(--verde-oscuro);
@@ -152,7 +250,7 @@ main {
 }
 
 button {
-  background-color: var(--verde);
+  background-color: var(--verde-oscuro);
   color: white;
   border: none;
   padding: 10px 16px;
@@ -163,7 +261,7 @@ button {
 }
 
 button:hover {
-  background-color: #12532d;
+  background-color: #07391c;
 }
 
 .info {
@@ -207,22 +305,7 @@ footer {
   font-size: 0.9em;
 }
 
-/* 📱 Responsive */
-@media (max-width: 768px) {
-  .rutinas {
-    flex-direction: column;
-    align-items: center;
-  }
 
-  .rutina-card {
-    width: 80%;
-  }
-
-  nav ul {
-    flex-direction: column;
-    align-items: center;
-  }
-}
 
 
 
@@ -287,34 +370,284 @@ form a {
 }
 /* ----------------------------------- */
 
-/* ----------------tabla compras--------------------- */
+
+/* ========================= */
+/*   MIS COMPRAS NETFLIX UI  */
+/* ========================= */
+
 #mis-compras {
-  margin: 40px auto;
-  max-width: 800px;
-  padding: 20px;
-  background-color: #14532d;
-  border-radius: 12px;
+  background: #000;
+  padding: 50px;
+  color: white;
+  min-height: 100vh;
+  font-family: Arial, sans-serif;
+  position: relative;
 }
 
-#mis-compras h2 {
-  text-align: center;
-  color: var(--verde-principal, #2e7d32);
-  margin-bottom: 20px;
+/* Header */
+.compras-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 25px;
 }
 
-.tabla-compras {
+.compras-header h2 {
+  font-size: 2.3rem;
+  font-weight: bold;
+}
+
+/* Botón recargar */
+.btn-recargar {
+  background: #222;
+  color: white;
+  border: none;
+  padding: 10px 18px;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.btn-recargar:hover {
+  background: #e50914;
+}
+
+/* ========================= */
+/* Carrusel horizontal */
+/* ========================= */
+
+.compras-carrusel {
+  display: flex;
+  gap: 18px;
+  overflow-x: auto;
+  scroll-behavior: smooth;
+  padding: 20px 10px;
+}
+
+/* Scrollbar estilo Netflix */
+.compras-carrusel::-webkit-scrollbar {
+  height: 8px;
+}
+
+.compras-carrusel::-webkit-scrollbar-thumb {
+  background: #444;
+  border-radius: 10px;
+}
+
+/* ========================= */
+/* Card Netflix */
+/* ========================= */
+
+.compra-card {
+  min-width: 200px;
+  max-width: 200px;
+  background: #111;
+  border-radius: 18px;
+  overflow: hidden;
+  box-shadow: 0px 6px 18px rgba(0,0,0,0.8);
+  transition: transform 0.3s ease;
+}
+
+.compra-card:hover {
+  transform: scale(1.12);
+  z-index: 10;
+}
+
+/* Imagen poster */
+.compra-card img {
   width: 100%;
-  border-collapse: collapse;
-  
+  height: 140px;
+  object-fit: cover;
 }
 
-.tabla-compras th,
-.tabla-compras td {
-  padding: 12px;
-  text-align: left;
-  border-bottom: 1px solid #ccc5;
+/* Contenido */
+.compra-card-content {
+  padding: 15px;
 }
 
-.tabla-compras th {
-  color: #333;
+.compra-card h3 {
+  font-size: 1.1rem;
+  margin: 0;
 }
+
+.compra-card p {
+  margin: 8px 0;
+  font-size: 0.85rem;
+  color: #bbb;
+}
+
+/* Botón descargar */
+.compra-card button {
+  width: 100%;
+  margin-top: 10px;
+  padding: 11px;
+  border: none;
+  border-radius: 10px;
+  background: #e50914;
+  color: white;
+  font-weight: bold;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.compra-card button:hover {
+  background: #ff1a25;
+}
+
+.link-cuaderno{
+  display:block;
+  margin-top:10px;
+  text-align:center;
+  font-size:0.9rem;
+  color:#4CAF50;
+  text-decoration:none;
+  transition:0.3s;
+}
+
+.link-cuaderno:hover{
+  text-decoration:underline;
+  color:#6cff9c;
+}
+
+/* ========================= */
+/* Flechas Netflix */
+/* ========================= */
+
+.flecha {
+  position: absolute;
+  top: 55%;
+  transform: translateY(-50%);
+  background: rgba(20,20,20,0.8);
+  border: none;
+  color: white;
+  font-size: 2.2rem;
+  padding: 15px;
+  cursor: pointer;
+  border-radius: 50%;
+  transition: 0.3s;
+  z-index: 20;
+}
+
+.flecha:hover {
+  background: rgba(229,9,20,0.9);
+}
+
+/* Izquierda */
+.flecha-izq {
+  left: 15px;
+}
+
+/* Derecha */
+.flecha-der {
+  right: 15px;
+}
+
+
+/* Admin cards */
+.admin-card {
+  background: #111;
+  padding: 15px;
+  margin: 10px 0;
+  border-radius: 12px;
+  color: white;
+  box-shadow: 0px 0px 10px rgba(0,0,0,0.6);
+}
+
+
+
+/* MODAL */
+.mas-info {
+  color: var(--gris-oscuro);
+  font-size: 14px;
+  text-decoration: none;
+  display: flex;
+  padding-top: 10px;
+  justify-content: center;
+}
+
+.mas-info:hover {
+  text-decoration: underline;
+}
+
+.modal {
+  display: none;
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.7);
+  justify-content: center;
+  align-items: center;
+  z-index: 2;
+}
+
+.modal-content {
+  background: #222;
+  padding: 30px;
+  border-radius: 12px;
+  width: 90%;
+  max-width: 400px;
+  color: white;
+}
+
+.close {
+  float: right;
+  cursor: pointer;
+  font-size: 22px;
+}
+
+/* 📱 Responsive */
+@media (max-width: 768px) {
+
+  header{
+    height: auto;
+    padding:40px 20px;
+  }
+
+  header h1{
+    font-size:1.6rem;
+  }
+
+  #btnCerrarSesion{
+    top:15px;
+    left:15px;
+    font-size:12px;
+  }
+
+  .rutinas {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .rutina-card {
+    width: 80%;
+  }
+
+  nav ul {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  #mis-compras {
+    padding: 20px;
+  }
+
+  .compra-card {
+    min-width: 180px;
+    max-width: 180px;
+  }
+
+  .flecha {
+    display: none; /* ocultar flechas en celular */
+  }
+
+  .compra-card{
+    min-width:160px;
+    max-width:160px;
+  }
+
+  .form-container{
+    width:90%;
+    margin:30px auto;
+  }
+}
+
+

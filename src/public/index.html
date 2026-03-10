@@ -16,15 +16,24 @@
 
 <!-- 🔝 Navegación -->
 <header>
-    <h1>FitPro - Rutinas Personalizadas</h1>
+    
+    <button id="btnCerrarSesion">Cerrar sesión</button>
     <nav>
         <ul>
             <li><a href="#" onclick="mostrarSeccion('inicio')">Inicio</a></li>
             <li><a href="#" onclick="mostrarSeccion('login')">Login</a></li>
             <li><a href="#" onclick="mostrarSeccion('registro')">Registro</a></li>
             <li><a href="#" onclick="mostrarSeccion('mis-compras')">Mis compras</a></li>
+            <li id="linkAdmin" style="display: none;" >
+                <a href="#" onclick="mostrarSeccion('admin-panel')">Admin</a>
+            </li>
         </ul>
     </nav>
+
+    <div id="estadoSesion"></div>
+    
+
+
 </header>
 
 
@@ -32,30 +41,106 @@
 <!-- 🏠 Inicio -->
 <main id="inicio">
     <section class="intro">
-    <h2>Alcanza tu mejor versión</h2>
-    <p>Compra rutinas personalizadas según tu objetivo físico: fuerza, masa, definición o rendimiento.</p>
+    <h2 id="motivacion"><b>CONSTRUYE EL CUERPO QUE TE MERECES</b></h2>
+
     </section>
 
     <section class="rutinas">
-    <div class="rutina-card">
-        <h3>Rutina de Fuerza</h3>
-        <p>Entrenamiento de 4 días centrado en fuerza máxima. Incluye progresión semanal.</p>
-        <span class="precio">$4.500 ARS</span>
-        <button class="btnComprar" >Comprar</button>
-    </div>
-    <div class="rutina-card">
-        <h3>Rutina de Hipertrofia</h3>
-        <p>Plan de 5 días para ganar masa muscular con ejercicios compuestos y aislamiento.</p>
-        <span class="precio">$5.000 ARS</span>
-        <button class="btnComprar">Comprar</button>
-    </div>
-    <div class="rutina-card">
-        <h3>Full Body Express</h3>
-        <p>Ideal para quienes entrenan 3 veces por semana. Alta intensidad, corta duración.</p>
-        <span class="precio">$3.800 ARS</span>
-        <button class="btnComprar">Comprar</button>
-    </div>
+        <div class="rutinas-hombres">
+            <h3 class="titulo-genero">Planes para hombres</h3>
+            <div id="RHPrinc" class="rutina-card">
+                <h3>Plan Principiantes 3 dias</h3>
+                <span class="precio">$15.000 ARS</span>
+                
+                <a href="#" onclick="verMasInfo(1)" class="mas-info">
+                    Más info →
+                </a>
+                <button class="btnComprar"
+                    data-id="1"
+                >Comprar</button>
+            </div>
+            <div id="RHIntermedio" class="rutina-card">
+                <h3>Plan Intermedios 4 dias</h3>
+                <span class="precio">$15.000 ARS</span>
+                <a href="#" onclick="verMasInfo(2)" class="mas-info">
+                    Más info →
+                </a>
+                <button class="btnComprar"
+                    data-id="2"
+                >Comprar</button>
+            </div>
+            <div id="RHAvanzado" class="rutina-card">
+                <h3>Plan Avanzados 5 dias</h3>
+                <span class="precio">$15.000 ARS</span>
+                <a href="#" onclick="verMasInfo(3)" class="mas-info">
+                    Más info →
+                </a>
+                <button class="btnComprar"
+                    data-id="3"
+                >Comprar</button>
+            </div>
+        </div>
+
+        <div class="rutinas-mujeres">
+            <h3 class="titulo-genero">Planes para mujeres</h3>
+            <div class="rutina-card">
+                <h3>Plan Principiantes 3 dias Mujeres</h3>
+                
+                <span class="precio">$15.000 ARS</span>
+                <a href="#" onclick="verMasInfo(4)" class="mas-info">
+                    Más info →
+                </a>
+                <button class="btnComprar"
+                    data-id="4"
+                >Comprar</button>
+            </div>
+            <div class="rutina-card">
+                <h3>Plan Intermedias 4 dias Mujeres</h3>
+                
+                <span class="precio">$15.000 ARS</span>
+                <a href="#" onclick="verMasInfo(5)" class="mas-info">
+                    Más info →
+                </a>
+                <button class="btnComprar"
+                    data-id="5"
+                >Comprar</button>
+            </div>
+            <div class="rutina-card">
+                <h3>Plan Avanzadas 5 dias Mujeres</h3>
+                
+                <span class="precio">$15.000 ARS</span>
+                <a href="#" onclick="verMasInfo(6)" class="mas-info">
+                    Más info →
+                </a>
+                <button class="btnComprar"
+                    data-id="6"
+                >Comprar</button>
+            </div>
+        </div>
+        <div class="asesorias">
+            <h3 class="titulo-genero">Asesorias</h3>
+            <div id="AsesoPers" class="rutina-card">
+                <h3>Asesoria personalizada</h3>
+                <span>Entrenamiento +<br>
+                    Alimentacion +<br>
+                    Contacto</span>
+                
+                <a href="#" onclick="verMasInfo(7)" class="mas-info">
+                    Más info →
+                </a>
+                <button class="ContacAseso"
+                >Contactar</button>
+            </div>
+        </div>
+        
     </section>
+
+    <div id="modalInfo" class="modal">
+        <div class="modal-content">
+            <span onclick="cerrarModal()" class="close">×</span>
+            <div id="contenidoModal"></div>
+        </div>
+    </div>
 
 </main>
 
@@ -63,8 +148,8 @@
 <section id="login" class="form-container" style="display:none;">
     <h2>Iniciar sesión</h2>
     <form id="login-form">
-        <input type="email" placeholder="Email" required />
-        <input type="password" placeholder="Contraseña" required />
+        <input id="login-email" type="email" placeholder="Email" required />
+        <input id="login-password" type="password" placeholder="Contraseña" required />
         <button type="submit">Ingresar</button>
     </form>
 </section>
@@ -73,47 +158,52 @@
 <section id="registro" class="form-container" style="display:none;">
     <h2>Crear cuenta</h2>
     <form id="register-form">
-    <input type="text" placeholder="Nombre completo" required />
-    <input type="email" placeholder="Email" required />
-    <input type="password" placeholder="Contraseña" required />
-    <button type="submit">Registrarme</button>
+        <input id="register-name" type="text" placeholder="Nombre completo" required />
+        <input id="register-email" type="email" placeholder="Email" required />
+        <input id="register-password" type="password" placeholder="Contraseña" required />
+        <button type="submit">Registrarme</button>
     </form>
 </section>
 
 <!-- mis Compras -->
 <section id="mis-compras" style="display:none;">
-    <table class="tabla-compras">
-        <thead>
-            <tr>
-                <th>Nombre</th>
-                <th>Rutina</th>
-                <th>Fecha</th>
-            </tr>
-        </thead>
-        <tbody id="compras-body">
-            <tr>
-                <td>Valen</td>
-                <td>Hipertrofia</td>
-                <td>22/07/2025</td> 
-            </tr>
-            <tr>
-                <td>Valen</td>
-                <td>Hipertrofia</td>
-                <td>22/07/2025</td> 
-            </tr>
-            <tr>
-                <td>Valen</td>
-                <td>Hipertrofia</td>
-                <td>22/07/2025</td> 
-            </tr>
 
-        </tbody>
-    </table>
+  <div class="compras-header">
+    <h2>📦 Mis Compras</h2>
+
+    <button class="btn-recargar" onclick="cargarMisCompras()">
+      🔄 Recargar
+    </button>
+  </div>
+
+  <!-- Flecha izquierda -->
+  <button class="flecha flecha-izq" onclick="scrollCompras(-1)">
+    ❮
+  </button>
+
+  <!-- Carrusel -->
+  <div id="lista-compras" class="compras-carrusel"></div>
+
+  <!-- Flecha derecha -->
+  <button class="flecha flecha-der" onclick="scrollCompras(1)">
+    ❯
+  </button>
+
 </section>
 
+<!-- PANEL admin -->
+<section id="admin-panel" style="display:none;">
+  <h2>🛠 Panel de Administración</h2>
+
+  <button onclick="cargarUsuarios()">👥 Ver Usuarios</button>
+  <button onclick="cargarPagos()">💳 Ver Pagos</button>
+
+  <div id="admin-data"></div>
+</section>
+
+
 <section class="info">
-    
-    <a href="https://wa.me/XXXXXXXXXX" target="_blank" class="whatsapp">
+    <a href="https://wa.me/3435021983" target="_blank" class="whatsapp">
         <i class="fab fa-whatsapp"></i>
     </a>
     <a href="https://www.instagram.com/_cristianschmidt" target="_blank" class="instagram">
