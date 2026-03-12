@@ -20,7 +20,7 @@ console.log("prueba codigo");
 router.post('/crear-preferencia', verificarToken, async (req, res) => {
     const usuarioId = req.usuario.id;
     const emailUsuario = req.usuario.email;
-
+    console.log("Endpoint ejecutado");
     console.log("Compra iniciada por usuario: ", usuarioId);
     try {
         // solo recibimos el ID de la rutina

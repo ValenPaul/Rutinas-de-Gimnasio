@@ -20,6 +20,7 @@ const supabase = createClient(
 
 router.post("/", async (req, res) => {
   console.log("🔔 Webhook recibido");
+  console.log("Endpoint ejecutado");
 
   const { topic, resource, type, data } = req.body;
   let paymentId = null;
