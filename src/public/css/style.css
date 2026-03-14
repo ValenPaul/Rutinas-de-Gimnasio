@@ -368,6 +368,15 @@ form a {
   color: var(--verde-oscuro);
   text-decoration: none;
 }
+
+#CrearCuenta {
+  color: #5c4698;
+  display: flex;
+  justify-content: center;
+}
+#CrearCuenta:hover {
+  color: #938da3;
+}
 /* ----------------------------------- */
 
 

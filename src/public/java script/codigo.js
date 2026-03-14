@@ -1,3 +1,4 @@
+const { TokenExpiredError } = require("jsonwebtoken");
 
 const API_URL = window.location.origin;
 
@@ -402,6 +403,13 @@ document.querySelectorAll(".btnComprar").forEach((boton) => {
           rutina_id: rutinaId
         })
       });
+
+      if (resp.status === 401) {
+        alert("Tu sesión expiró. Iniciá sesión nuevamente.");
+        localStorage.removeItem("token");
+        mostrarSeccion("login");
+        return;
+      }
 
       if (!resp.ok) {
         const error = await resp.text();
