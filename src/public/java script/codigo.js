@@ -277,7 +277,7 @@ async function cargarPagos() {
         <p>Monto: $${p.monto}</p>
         <p>Fecha: $${p.fecha_pago}</p>
         <p>Email enviado: ${p.email_enviado ? "✅" : "❌"}</p>
-        <p>Error: ${p.error_mail || "-"}</p>
+        <p>Error: ${p.error_email || "-"}</p>
       </div>
     `;
   });
