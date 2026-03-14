@@ -182,8 +182,7 @@ async function enviarMail(payment, pdfPath, rutinaId) {
     });
 
     const emailComprador =
-      //payment.payer?.email ||
-      "valenpaul02@gmail.com";
+      payment.payer?.email;
 
     await transporter.sendMail({
       from: `"Rutinas de Gimnasio" <${process.env.EMAIL_USER}>`,
