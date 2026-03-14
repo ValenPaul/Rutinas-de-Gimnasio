@@ -1,12 +1,21 @@
 
 const API_URL = window.location.origin;
 
+// SOLO PARA DESARROLLO LOCAL, probar frontend
+  if (window.location.hostname === "127.0.0.1" || window.location.hostname === "localhost") {
+    localStorage.setItem("token", "dev-token");
+    localStorage.setItem("usuario", JSON.stringify({ 
+      nombre: "Admin Dev",
+      rol: "admin"
+  }));
+}
 
 function verificarSesion() {
   const token = localStorage.getItem("token")
   const usuario = JSON.parse(localStorage.getItem("usuario"));
   const estado = document.getElementById("estadoSesion")
   const boton = document.getElementById("btnCerrarSesion")
+
 
   if (token) {
     estado.innerHTML = `Hola ${usuario?.nombre}`
@@ -44,7 +53,6 @@ document.getElementById("btnCerrarSesion").addEventListener("click", () => {
 document.getElementById("login-form").addEventListener("submit", async (e) => {
   e.preventDefault();
   
-
   const email = document.getElementById("login-email").value;
   const password = document.getElementById("login-password").value;
 
@@ -267,6 +275,7 @@ async function cargarPagos() {
       <div class="admin-card">
         <p><b>${p.email}</b> compró <b>${p.rutina}</b></p>
         <p>Monto: $${p.monto}</p>
+        <p>Fecha: $${p.fecha_pago}</p>
         <p>Email enviado: ${p.email_enviado ? "✅" : "❌"}</p>
         <p>Error: ${p.error_mail || "-"}</p>
       </div>

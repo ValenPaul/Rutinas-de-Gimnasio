@@ -192,13 +192,23 @@
 </section>
 
 <!-- PANEL admin -->
-<section id="admin-panel" style="display:none;">
-  <h2>🛠 Panel de Administración</h2>
+<!-- PANEL ADMIN -->
+<section id="admin-panel" class="admin-panel" style="display:none;">
+  
+  <h2 class="admin-title">⚙️ Panel de Administración</h2>
 
-  <button onclick="cargarUsuarios()">👥 Ver Usuarios</button>
-  <button onclick="cargarPagos()">💳 Ver Pagos</button>
+  <div class="admin-actions">
+    <button class="admin-btn" onclick="cargarUsuarios()">
+      👥 Ver Usuarios
+    </button>
 
-  <div id="admin-data"></div>
+    <button class="admin-btn" onclick="cargarPagos()">
+      💳 Ver Pagos
+    </button>
+  </div>
+
+  <div id="admin-data" class="admin-data"></div>
+
 </section>
 
 
