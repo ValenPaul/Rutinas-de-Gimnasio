@@ -380,12 +380,7 @@ document.querySelectorAll(".btnComprar").forEach((boton) => {
     const token = localStorage.getItem("token");
     console.log("TOKEN:", token);
 
-    if (resp.status === 401 || resp.status === 403) {
-        alert("Tu sesión expiró. Iniciá sesión nuevamente.");
-        localStorage.removeItem("token");
-        mostrarSeccion("login");
-        return;
-    }
+    
 
     if (!token) {
       alert("Debés iniciar sesión para comprar esta rutina");
@@ -411,7 +406,12 @@ document.querySelectorAll(".btnComprar").forEach((boton) => {
         })
       });
 
-      
+      if (resp.status === 401 || resp.status === 403) {
+        alert("Tu sesión expiró. Iniciá sesión nuevamente.");
+        localStorage.removeItem("token");
+        mostrarSeccion("login");
+        return;
+      }
 
       if (!resp.ok) {
         const error = await resp.text();
