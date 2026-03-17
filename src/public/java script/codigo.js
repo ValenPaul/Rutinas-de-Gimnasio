@@ -162,7 +162,7 @@ async function cargarMisCompras() {
 
           <h3>${c.nombre}</h3>
           <p>Comprada el: ${new Date(c.fecha_pago).toLocaleDateString()}</p>
-          <button onclick="descargarRutina('${c.rutina_id}')">
+          <button onclick="descargarRutina('${c.rutina_id}')" target="_blank">
             📥 Descargar PDF
           </button>
           <a 
