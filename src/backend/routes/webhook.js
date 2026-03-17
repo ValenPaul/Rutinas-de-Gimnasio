@@ -185,12 +185,12 @@ async function enviarMail(payment, pdfPath, rutinaId) {
       payment.payer?.email;
 
     await transporter.sendMail({
-      from: `"Rutinas de Gimnasio" <${process.env.EMAIL_USER}>`,
+      from: `"Planes de entrenamiento" <${process.env.EMAIL_USER}>`,
       to: emailComprador,
-      subject: "Tu rutina personalizada 💪",
+      subject: "Tu plan personalizado 💪",
       html: `
         <h2>¡Gracias por tu compra!</h2>
-        <p>Adjuntamos tu rutina en formato PDF, junto a un video explicativo de ¿Como utilizar el cuaderno?</p>
+        <p>Adjuntamos tu plan en formato PDF, junto a un video explicativo de ¿Como utilizar el cuaderno?</p>
         <h3>Video explicativo</h3>
         <a href="https://youtube.com/shorts/QRo9z67pWDQ?si=i19AD7uUVohW4J22">¿Como utilizar el cuaderno?</a>
       `,
