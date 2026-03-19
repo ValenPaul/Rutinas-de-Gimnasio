@@ -162,7 +162,7 @@ async function cargarMisCompras() {
 
           <h3>${c.nombre}</h3>
           <p>Comprada el: ${new Date(c.fecha_pago).toLocaleDateString()}</p>
-          <button onclick="descargarRutina('${c.rutina_id}')" target="_blank">
+          <button onclick="descargarRutina('${c.rutina_id}')" >
             📥 Descargar PDF
           </button>
           <a 
@@ -183,31 +183,39 @@ async function cargarMisCompras() {
 
 async function descargarRutina(rutinaId) {
   const token = localStorage.getItem("token");
-  console.log("token", token);
 
-  const resp = await fetch(`${API_URL}/api/compras/descargar/${rutinaId}`, {
-    headers: {
-      Authorization: `Bearer ${token}`
+  // abrir ventana primero (clave para mobile)
+  const nuevaVentana = window.open("", "_blank");
+
+  try {
+    const resp = await fetch(`${API_URL}/api/compras/descargar/${rutinaId}`, {
+      headers: {
+        Authorization: `Bearer ${token}`
+      }
+    });
+
+    const data = await resp.json();
+
+    if (data.error) {
+      nuevaVentana.close(); // cerrar si hay error
+      alert(data.error);
+      return;
     }
-  });
 
-  const data = await resp.json();
-  console.log("DATA COMPLETA:", data);
-  
-// para que no se abra la ventana en blanco cuando hay error
-  if (data.error) {
-    alert(data.error);
-    return;
+    if (!data.url) {
+      nuevaVentana.close();
+      alert("No se pudo generar la descarga");
+      return;
+    }
+
+    // redirigir la ventana ya abierta
+    nuevaVentana.location.href = data.url;
+
+  } catch (error) {
+    nuevaVentana.close();
+    console.error(error);
+    alert("Error al descargar");
   }
-
-  if (!data.url) {
-    alert("No se pudo generar la descarga");
-    return;
-  }
-  
-
-  // Abrir PDF en nueva pestaña
-  window.open(data.url, "_blank");
 }
 
 
